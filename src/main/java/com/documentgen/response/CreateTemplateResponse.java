@@ -19,16 +19,28 @@ public class CreateTemplateResponse {
     private Language language;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    private CreateTemplateType createTemplateType;
+    private CreateTemplateTypeResponse createTemplateTypeResponse;
+    private CreateTemplateLanguageResponse createTemplateLanguageResponse;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class CreateTemplateType {
+    public static class CreateTemplateTypeResponse {
         private Long id;
         private String name;
+        private String description;
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class CreateTemplateLanguageResponse {
+        private Long id;
+        private Language language;
         private String description;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;

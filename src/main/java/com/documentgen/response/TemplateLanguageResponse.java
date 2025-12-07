@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +14,4 @@ public class TemplateLanguageResponse {
     private Long id;
     private Language language;
     private String description;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

@@ -12,13 +12,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateTemplateResponse {
+public class TemplateLanguageResponse {
     private Long id;
-    private String name;
-    private String description;
     private Language language;
+    private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private TemplateTypeResponse templateTypeResponse;
-    private TemplateLanguageResponse templateLanguageResponse;
 }

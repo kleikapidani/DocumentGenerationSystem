@@ -1,6 +1,5 @@
 package com.documentgen.response;
 
-import com.documentgen.enums.Language;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,13 +11,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateTemplateResponse {
+public class TemplateTypeResponse {
     private Long id;
     private String name;
     private String description;
-    private Language language;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private TemplateTypeResponse templateTypeResponse;
-    private TemplateLanguageResponse templateLanguageResponse;
 }

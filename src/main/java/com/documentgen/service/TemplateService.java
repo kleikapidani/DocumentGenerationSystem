@@ -9,7 +9,9 @@ import com.documentgen.repository.TemplateLanguageRepository;
 import com.documentgen.repository.TemplateRepository;
 import com.documentgen.repository.TemplateTypeRepository;
 import com.documentgen.request.CreateTemplateRequest;
+import com.documentgen.response.TemplateLanguageResponse;
 import com.documentgen.response.CreateTemplateResponse;
+import com.documentgen.response.TemplateTypeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,8 +47,8 @@ public class TemplateService {
                 .description(addedTemplate.getDescription())
                 .createdAt(addedTemplate.getCreatedAt())
                 .updatedAt(addedTemplate.getUpdatedAt())
-                .createTemplateTypeResponse(
-                        CreateTemplateResponse.CreateTemplateTypeResponse.builder()
+                .templateTypeResponse(
+                        TemplateTypeResponse.builder()
                                 .id(addedTemplate.getTemplateType().getId())
                                 .name(addedTemplate.getTemplateType().getName())
                                 .description(addedTemplate.getTemplateType().getDescription())
@@ -54,8 +56,8 @@ public class TemplateService {
                                 .updatedAt(addedTemplate.getTemplateType().getUpdatedAt())
                                 .build()
                 )
-                .createTemplateLanguageResponse(
-                        CreateTemplateResponse.CreateTemplateLanguageResponse.builder()
+                .templateLanguageResponse(
+                        TemplateLanguageResponse.builder()
                                 .id(addedTemplate.getTemplateLanguage().getId())
                                 .language(addedTemplate.getTemplateLanguage().getLanguage())
                                 .description(addedTemplate.getTemplateLanguage().getDescription())

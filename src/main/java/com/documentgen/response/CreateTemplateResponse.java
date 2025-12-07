@@ -20,6 +20,8 @@ public class CreateTemplateResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    private CreateTemplateType createTemplateType;
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor

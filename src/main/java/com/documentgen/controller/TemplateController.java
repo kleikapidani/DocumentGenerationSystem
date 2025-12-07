@@ -5,14 +5,12 @@ import com.documentgen.response.CreateTemplateResponse;
 import com.documentgen.service.TemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/template")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class TemplateController {
 
     private final TemplateService templateService;

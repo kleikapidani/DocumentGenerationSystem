@@ -52,8 +52,6 @@ public class TemplateService {
                                 .id(addedTemplate.getTemplateType().getId())
                                 .name(addedTemplate.getTemplateType().getName())
                                 .description(addedTemplate.getTemplateType().getDescription())
-                                .createdAt(addedTemplate.getTemplateType().getCreatedAt())
-                                .updatedAt(addedTemplate.getTemplateType().getUpdatedAt())
                                 .build()
                 )
                 .templateLanguageResponse(
@@ -61,8 +59,6 @@ public class TemplateService {
                                 .id(addedTemplate.getTemplateLanguage().getId())
                                 .language(addedTemplate.getTemplateLanguage().getLanguage())
                                 .description(addedTemplate.getTemplateLanguage().getDescription())
-                                .createdAt(addedTemplate.getTemplateLanguage().getCreatedAt())
-                                .updatedAt(addedTemplate.getTemplateLanguage().getUpdatedAt())
                                 .build()
                 )
                 .build();

@@ -1,6 +1,5 @@
 package com.documentgen.model;
 
-import com.documentgen.enums.Language;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +20,6 @@ public class Template {
     private String name;
     private String description;
 
-    @Enumerated(value = EnumType.STRING)
-    private Language language;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -33,4 +29,8 @@ public class Template {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_template_type")
     private TemplateType templateType;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_template_language")
+    private TemplateLanguage templateLanguage;
 }

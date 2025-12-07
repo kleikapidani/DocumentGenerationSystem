@@ -4,6 +4,7 @@ import com.documentgen.request.CreateTemplateRequest;
 import com.documentgen.response.CreateTemplateResponse;
 import com.documentgen.service.TemplateService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,8 @@ public class TemplateController {
     @PostMapping(value = "/create")
     public ResponseEntity<CreateTemplateResponse> createTemplate(@RequestBody CreateTemplateRequest request) {
         CreateTemplateResponse response = templateService.createTemplate(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+
 }

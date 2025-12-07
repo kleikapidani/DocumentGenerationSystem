@@ -11,8 +11,6 @@ public class TemplateTypeMapper {
                 .id(templateType.getId())
                 .name(templateType.getName())
                 .description(templateType.getDescription())
-                .createdAt(templateType.getCreatedAt())
-                .updatedAt(templateType.getUpdatedAt())
                 .build();
     }
 }

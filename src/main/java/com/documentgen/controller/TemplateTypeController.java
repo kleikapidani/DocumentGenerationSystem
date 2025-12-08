@@ -18,13 +18,13 @@ public class TemplateTypeController {
 
     private final TemplateTypeService templateTypeService;
 
-    @GetMapping
+    @GetMapping(value = "/extract")
     public ResponseEntity<List<TemplateTypeResponse>> extractTemplateTypeList() {
         List<TemplateTypeResponse> templateTypeResponseList = templateTypeService.extractTemplateTypeList();
         return ResponseEntity.ok(templateTypeResponseList);
     }
 
-    @PostMapping
+    @PostMapping(value = "/create")
     public ResponseEntity<TemplateTypeResponse> createTemplateType(CreateTemplateTypeRequest request) {
         TemplateTypeResponse templateTypeResponse = templateTypeService.createTemplateType(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(templateTypeResponse);

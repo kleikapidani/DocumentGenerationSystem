@@ -18,13 +18,13 @@ public class TemplateLanguageController {
 
     private final TemplateLanguageService templateLanguageService;
 
-    @GetMapping
+    @GetMapping(value = "/extract")
     public ResponseEntity<List<TemplateLanguageResponse>> extractTemplateLanguageList() {
         List<TemplateLanguageResponse> templateLanguageResponseList = templateLanguageService.extractTemplateLanguageList();
         return ResponseEntity.ok(templateLanguageResponseList);
     }
 
-    @PostMapping
+    @PostMapping(value = "/create")
     public ResponseEntity<TemplateLanguageResponse> createTemplateLanguage(@RequestBody CreateTemplateLanguageRequest request) {
         TemplateLanguageResponse templateLanguageResponse = templateLanguageService.createTemplateLanguage(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(templateLanguageResponse);

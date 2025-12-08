@@ -25,7 +25,7 @@ public class TemplateTypeController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<TemplateTypeResponse> createTemplateType(CreateTemplateTypeRequest request) {
+    public ResponseEntity<TemplateTypeResponse> createTemplateType(@RequestBody CreateTemplateTypeRequest request) {
         TemplateTypeResponse templateTypeResponse = templateTypeService.createTemplateType(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(templateTypeResponse);
     }

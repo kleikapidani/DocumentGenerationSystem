@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class CreateTemplateSectionRequest {
     private String name;
     private String description;
-    private Integer orderIndex;
     private Long idTemplate;
 }

@@ -13,8 +13,6 @@ public class TemplateMapper {
                 .id(addedTemplate.getId())
                 .name(addedTemplate.getName())
                 .description(addedTemplate.getDescription())
-                .createdAt(addedTemplate.getCreatedAt())
-                .updatedAt(addedTemplate.getUpdatedAt())
                 .templateTypeResponse(
                         TemplateTypeResponse.builder()
                                 .id(addedTemplate.getTemplateType().getId())

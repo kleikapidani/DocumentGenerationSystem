@@ -30,7 +30,6 @@ public class TemplateTypeService {
     public TemplateTypeResponse createTemplateType(CreateTemplateTypeRequest request) {
 
         TemplateType templateType = templateTypeFactory.convertToTemplateTypeEntity(request);
-
         TemplateType addedTemplateType = templateTypeRepository.save(templateType);
 
         return templateTypeMapper.convertToTemplateTypeResponse(addedTemplateType);

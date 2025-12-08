@@ -12,7 +12,7 @@ public class TemplateSectionFactory {
         Section section = new Section();
         section.setName(request.getName());
         section.setDescription(request.getDescription());
-        section.setOrderIndex(countSections == 0 ? 1 : (int) countSections);
+        section.setOrderIndex(countSections == 0 ? 1 : (int) countSections + 1);
         section.setTemplate(template);
 
         return section;

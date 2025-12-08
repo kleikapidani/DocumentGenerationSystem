@@ -28,10 +28,10 @@ public class Section {
     @Column(name = "order_index")
     private Integer orderIndex;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", insertable = false, updatable = false)
     private LocalDateTime updatedAt;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -1,14 +1,15 @@
 package com.documentgen.mapper;
 
 import com.documentgen.model.Template;
-import com.documentgen.response.CreateTemplateResponse;
-import com.documentgen.response.TemplateLanguageResponse;
-import com.documentgen.response.TemplateTypeResponse;
+import com.documentgen.response.*;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TemplateMapper {
+
     public CreateTemplateResponse convertToCreateTemplateResponse(Template addedTemplate) {
+
         return CreateTemplateResponse.builder()
                 .id(addedTemplate.getId())
                 .name(addedTemplate.getName())
@@ -27,6 +28,24 @@ public class TemplateMapper {
                                 .description(addedTemplate.getTemplateLanguage().getDescription())
                                 .build()
                 )
+                .build();
+    }
+
+    public TemplateFilterResponse convertToTemplateFilterResponse(Page<Template> result) {
+
+        return TemplateFilterResponse.builder()
+                .templates(result.getContent()
+                        .stream()
+                        .map(this::convertToCreateTemplateResponse)
+                        .toList())
+                .paginationResponse(PaginationResponse.builder()
+                        .size(result.getSize())
+                        .number(result.getNumber())
+                        .totalPages(result.getTotalPages())
+                        .totalElements(result.getTotalElements())
+                        .isFirst(result.isFirst())
+                        .isLast(result.isLast())
+                        .build())
                 .build();
     }
 }

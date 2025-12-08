@@ -11,8 +11,16 @@ import com.documentgen.repository.TemplateLanguageRepository;
 import com.documentgen.repository.TemplateRepository;
 import com.documentgen.repository.TemplateTypeRepository;
 import com.documentgen.request.CreateTemplateRequest;
+import com.documentgen.request.TemplateFilterRequest;
 import com.documentgen.response.CreateTemplateResponse;
+import com.documentgen.response.TemplateFilterResponse;
+import com.documentgen.specification.TemplateSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +48,26 @@ public class TemplateService {
         Template addedTemplate = templateRepository.save(newTemplate);
 
         return templateMapper.convertToCreateTemplateResponse(addedTemplate);
+    }
+
+    public TemplateFilterResponse extractAllByFilterAndPagination(TemplateFilterRequest request,
+                                                                  int page,
+                                                                  int size,
+                                                                  String direction,
+                                                                  String sortBy) {
+
+        Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Specification<Template> templateFilter = Specification.allOf(
+                TemplateSpecification.hasName(request.getName()),
+                TemplateSpecification.hasDescription(request.getDescription()),
+                TemplateSpecification.hasLanguage(request.getLanguage())
+        );
+
+        Page<Template> result = templateRepository.findAll(templateFilter, pageable);
+
+        return templateMapper.convertToTemplateFilterResponse(result);
     }
 }

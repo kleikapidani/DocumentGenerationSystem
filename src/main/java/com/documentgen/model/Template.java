@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "template")
@@ -33,4 +35,7 @@ public class Template {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_template_language")
     private TemplateLanguage templateLanguage;
+
+    @OneToMany(mappedBy = "template", fetch = FetchType.EAGER)
+    private List<Section> sections = new ArrayList<>();
 }

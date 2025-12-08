@@ -1,7 +1,9 @@
 package com.documentgen.controller;
 
 import com.documentgen.request.CreateTemplateRequest;
+import com.documentgen.request.TemplateFilterRequest;
 import com.documentgen.response.CreateTemplateResponse;
+import com.documentgen.response.TemplateFilterResponse;
 import com.documentgen.service.TemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,5 +24,14 @@ public class TemplateController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PostMapping(value = "/filter")
+    public ResponseEntity<TemplateFilterResponse> filterTemplates(@RequestBody(required = false) TemplateFilterRequest request,
+                                                                  @RequestParam(defaultValue = "0") int page,
+                                                                  @RequestParam(defaultValue = "5") int size,
+                                                                  @RequestParam(defaultValue = "ASC") String direction,
+                                                                  @RequestParam(defaultValue = "name") String sortBy) {
 
+        TemplateFilterResponse response = templateService.extractAllByFilterAndPagination(request, page, size, direction, sortBy);
+        return ResponseEntity.ok(response);
+    }
 }
